@@ -81,11 +81,16 @@ def main(args):
     all_args = parse_args(args, parser)
 
     if all_args.algorithm_name == "rmappo":
-        assert all_args.use_recurrent_policy or all_args.use_naive_recurrent_policy, "check recurrent policy!"
+        
+        # copy from MAPPO's train_mpe.py
+        all_args.use_recurrent_policy = True
+        all_args.use_naive_recurrent_policy = False
+        
+        assert all_args.use_recurrent_policy or all_args.use_naive_recurrent_policy, "(rmappo) check recurrent policy!"
     elif all_args.algorithm_name == "mappo":
         assert (
             all_args.use_recurrent_policy == False and all_args.use_naive_recurrent_policy == False
-        ), "check recurrent policy!"
+        ), "(mappo) check recurrent policy!"
     else:
         raise NotImplementedError
 
