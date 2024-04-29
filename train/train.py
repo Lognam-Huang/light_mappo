@@ -80,6 +80,11 @@ def main(args):
     parser = get_config()
     all_args = parse_args(args, parser)
 
+    # Lognam's testbed
+    # print(parser)
+    # print(all_args)
+    all_args.share_policy = True
+
     if all_args.algorithm_name == "rmappo":
         
         # copy from MAPPO's train_mpe.py
