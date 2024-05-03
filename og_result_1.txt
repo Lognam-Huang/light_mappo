@@ -1,0 +1,34 @@
+(test_light_mappo) jhuang52@eb2-3222-ub01:~/Desktop/MAPPO/light-mappo/light_mappo$ python ./train/train.py tee og_result_1.txt
+choose to use cpu...
+
+ Scenario MyEnv Algo mappo Exp check updates 0/10000 episodes, total num timesteps 1000/10000000.0, FPS 3724.
+
+
+ Scenario MyEnv Algo mappo Exp check updates 5/10000 episodes, total num timesteps 6000/10000000.0, FPS 3641.
+
+
+ Scenario MyEnv Algo mappo Exp check updates 10/10000 episodes, total num timesteps 11000/10000000.0, FPS 3657.
+
+
+ Scenario MyEnv Algo mappo Exp check updates 15/10000 episodes, total num timesteps 16000/10000000.0, FPS 3687.
+
+
+ Scenario MyEnv Algo mappo Exp check updates 20/10000 episodes, total num timesteps 21000/10000000.0, FPS 3707.
+
+
+ Scenario MyEnv Algo mappo Exp check updates 25/10000 episodes, total num timesteps 26000/10000000.0, FPS 3676.
+
+
+ Scenario MyEnv Algo mappo Exp check updates 30/10000 episodes, total num timesteps 31000/10000000.0, FPS 3680.
+
+
+ Scenario MyEnv Algo mappo Exp check updates 35/10000 episodes, total num timesteps 36000/10000000.0, FPS 3633.
+
+
+ Scenario MyEnv Algo mappo Exp check updates 40/10000 episodes, total num timesteps 41000/10000000.0, FPS 3622.
+
+
+ Scenario MyEnv Algo mappo Exp check updates 45/10000 episodes, total num timesteps 46000/10000000.0, FPS 3569.
+
+^Z
+[10]+  Stopped                 python ./train/train.py tee og_result_1.txt

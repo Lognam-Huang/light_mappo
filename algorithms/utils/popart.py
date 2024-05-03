@@ -60,7 +60,11 @@ class PopArt(torch.nn.Module):
         self.mean_sq.mul_(self.beta).add_(batch_sq_mean * (1.0 - self.beta))
         self.debiasing_term.mul_(self.beta).add_(1.0 * (1.0 - self.beta))
 
+        # try to solve by suggestion from chatGPT, operated by Lognam
         self.stddev = (self.mean_sq - self.mean ** 2).sqrt().clamp(min=1e-4)
+        # self.stddev = torch.nn.Parameter((self.mean_sq - self.mean ** 2).sqrt().clamp(min=1e-4))
+
+
 
         self.weight = self.weight * old_stddev / self.stddev
         self.bias = (old_stddev * self.bias + old_mean - self.mean) / self.stddev

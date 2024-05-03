@@ -112,6 +112,8 @@ class EnvRunner(Runner):
         # reset env
         obs = self.envs.reset()  # shape = [env_num, agent_num, obs_dim]
 
+        # print(obs.shape)
+
         # replay buffer
         if self.use_centralized_V:
             share_obs = obs.reshape(self.n_rollout_threads, -1)  # shape = [env_num, agent_num * obs_dim]
@@ -122,10 +124,17 @@ class EnvRunner(Runner):
             share_obs = obs
 
         self.buffer.share_obs[0] = share_obs.copy()
+
+        print(self.buffer.obs[0].shape)
+
+        # print(self.buffer.obs[0])
+
         self.buffer.obs[0] = obs.copy()
 
     @torch.no_grad()
     def collect(self, step):
+        # print("collect is called")
+
         self.trainer.prep_rollout()
         (
             value,

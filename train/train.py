@@ -9,7 +9,9 @@
 import sys
 import os
 import socket
+
 import setproctitle
+
 import numpy as np
 from pathlib import Path
 import torch
@@ -32,13 +34,13 @@ def make_train_env(all_args):
             # TODO 注意注意，这里选择连续还是离散可以选择注释上面两行，或者下面两行。
             # TODO Important, here you can choose continuous or discrete action space by uncommenting the above two lines or the below two lines.
 
-            from envs.env_continuous import ContinuousActionEnv
+            # from envs.env_continuous import ContinuousActionEnv
 
-            env = ContinuousActionEnv()
+            # env = ContinuousActionEnv()
 
-            # from envs.env_discrete import DiscreteActionEnv
+            from envs.env_discrete import DiscreteActionEnv
 
-            # env = DiscreteActionEnv()
+            env = DiscreteActionEnv()
 
             env.seed(all_args.seed + rank * 1000)
             return env
@@ -83,13 +85,13 @@ def main(args):
     # Lognam's testbed
     # print(parser)
     # print(all_args)
-    all_args.share_policy = True
+    # all_args.share_policy = True
 
     if all_args.algorithm_name == "rmappo":
         
-        # copy from MAPPO's train_mpe.py
-        all_args.use_recurrent_policy = True
-        all_args.use_naive_recurrent_policy = False
+        # # copy from MAPPO's train_mpe.py
+        # all_args.use_recurrent_policy = True
+        # all_args.use_naive_recurrent_policy = False
         
         assert all_args.use_recurrent_policy or all_args.use_naive_recurrent_policy, "(rmappo) check recurrent policy!"
     elif all_args.algorithm_name == "mappo":
