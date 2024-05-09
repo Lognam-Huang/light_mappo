@@ -1,16 +1,47 @@
 import numpy as np
+import json
 
 
 class EnvCore(object):
     """
     # 环境中的智能体
     """
-
+    def load_data(self, filepath):
+        with open(filepath, 'r') as file:
+            data = json.load(file)
+        return data
+    
     def __init__(self):
-        self.agent_num = 2  # 设置智能体(小飞机)的个数，这里设置为两个 # set the number of agents(aircrafts), here set to two
-        self.obs_dim = 14  # 设置智能体的观测维度 # set the observation dimension of agents
-        self.action_dim = 5  # 设置智能体的动作维度，这里假定为一个五个维度的 # set the action dimension of agents, here set to a five-dimensional
+        # Lognam: try to implement scenario
+        self.scene_info = None
+        self.UAV_targets = None
 
+        # self.load_scene_data("scene_data_simple.json")
+        # self.load_targets("UAV_targets.json")
+
+        self.scene_info = self.load_data("scene_data_simple.json")
+        self.UAV_targets = self.load_data("UAV_targets.json")['targets']
+
+
+        # self.agent_num = 2  # 设置智能体(小飞机)的个数，这里设置为两个 # set the number of agents(aircrafts), here set to two
+        # self.obs_dim = 14  # 设置智能体的观测维度 # set the observation dimension of agents
+        # self.action_dim = 5  # 设置智能体的动作维度，这里假定为一个五个维度的 # set the action dimension of agents, here set to a five-dimensional
+
+        self.agent_num = len(self.UAV_targets)
+        self.obs_dim = 5
+        self.action_dim = 10
+
+    def load_scene_data(self, filepath):
+        with open(filepath, 'r') as file:
+            self.scene_data = json.load(file)
+
+    def load_targets(filepath):
+        with open(filepath, 'r') as file:
+            data = json.load(file)
+        return data['targets']
+    
+    
+          
     def reset(self):
         """
         # self.agent_num设定为2个智能体时，返回值为一个list，每个list里面为一个shape = (self.obs_dim, )的观测数据
