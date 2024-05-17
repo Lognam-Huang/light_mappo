@@ -125,7 +125,7 @@ class EnvRunner(Runner):
 
         self.buffer.share_obs[0] = share_obs.copy()
 
-        print(self.buffer.obs[0].shape)
+        # print(self.buffer.obs[0].shape)
 
         # print(self.buffer.obs[0])
 

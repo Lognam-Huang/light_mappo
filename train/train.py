@@ -87,6 +87,7 @@ def main(args):
     # print(parser)
     # print(all_args)
     all_args.share_policy = True
+    all_args.use_centralized_V = False
 
     if all_args.algorithm_name == "rmappo":
         
